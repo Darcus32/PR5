@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const todoForm = document.getElementById('todo-form');
   const todoInput = document.getElementById('todo-input');
   const todoList = document.getElementById('todo-list');
-
+  
   const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
   storedTodos.forEach(todo => {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       addTodoToStorage(todo); 
-      addTodoFromStorage(todo); 
+      addTodoFromStorage(todo);
       todoInput.value = '';
     }
   }
@@ -69,6 +69,15 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteBtn.addEventListener('click', function() {
       li.remove();
       deleteTodoFromStorage(todo); 
+    });
+
+    span.addEventListener('dblclick', function() {
+      const editText = prompt('Edit task:', span.textContent);
+      if (editText !== null && editText.trim() !== '') {
+        todo.text = editText;
+        span.textContent = editText;
+        updateTodoInStorage(todo); 
+      }
     });
   }
 
