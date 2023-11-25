@@ -3,10 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const todoInput = document.getElementById('todo-input');
   const todoList = document.getElementById('todo-list');
 
-  // Отримання списку завдань з localStorage при завантаженні сторінки
   const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
-  // Відображення завдань збережених в localStorage
   storedTodos.forEach(todo => {
     addTodoFromStorage(todo);
   });
@@ -25,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         completed: false
       };
 
-      addTodoToStorage(todo); // Збереження нового завдання в localStorage
-      addTodoFromStorage(todo); // Відображення нового завдання на сторінці
+      addTodoToStorage(todo);
+      addTodoFromStorage(todo); 
       todoInput.value = '';
     }
   }
@@ -56,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     checkbox.addEventListener('change', function() {
       todo.completed = !todo.completed;
-      updateTodoInStorage(todo); // Оновлення статусу завдання в localStorage
+      updateTodoInStorage(todo); 
       if (todo.completed) {
         span.style.textDecoration = 'line-through';
         span.style.color = '#999';
@@ -70,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     deleteBtn.addEventListener('click', function() {
       li.remove();
-      deleteTodoFromStorage(todo); // Видалення завдання з localStorage
+      deleteTodoFromStorage(todo); 
     });
   }
 
